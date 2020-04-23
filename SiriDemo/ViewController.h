@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Speech/Speech.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<SFSpeechRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
+//Speech
+@property (strong, nonatomic) AVAudioEngine * audioEngine;
+@property (strong, nonatomic) SFSpeechRecognizer * speechRecognizer;
+@property (strong, nonatomic) SFSpeechAudioBufferRecognitionRequest * request;
+@property (strong, nonatomic) SFSpeechRecognitionTask * recognitionTask;
+@property (nonatomic) BOOL isRecording;
+
+- (IBAction)startButtonAction:(id)sender;
 
 @end
 
